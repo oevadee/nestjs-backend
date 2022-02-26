@@ -5,48 +5,25 @@ import { users } from 'src/constants/users';
 
 @Injectable()
 export class UsersService {
-  private readonly users: User[] =
-    users;
+  private readonly users: User[] = users;
 
-  create(
-    user: User,
-  ) {
-    const newUser =
-      {
-        ...user,
-        id: uuidv4(),
-      };
-    this.users.push(
-      newUser,
-    );
+  create(user: User) {
+    const newUser = {
+      ...user,
+      id: uuidv4(),
+    };
+    this.users.push(newUser);
   }
 
   findAll(): User[] {
-    return this
-      .users;
+    return this.users;
   }
 
-  findOneUser(
-    userId,
-  ): User {
-    return this.users.find(
-      ({
-        id,
-      }) =>
-        id ===
-        userId,
-    );
+  findOneUser(userId): User {
+    return this.users.find(({ id }) => id === userId);
   }
 
-  deleteUser(
-    userId,
-  ) {
-    return this.users.filter(
-      ({
-        id,
-      }) =>
-        id !==
-        userId,
-    );
+  deleteUser(userId) {
+    return this.users.filter(({ id }) => id !== userId);
   }
 }
