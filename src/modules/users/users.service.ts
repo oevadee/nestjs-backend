@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from './interfaces/user.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { users } from 'src/constants/users';
-import { UpdateUser } from './types';
+import { UpdateUserDto } from './dtos/update-user-dto';
 
 @Injectable()
 export class UsersService {
@@ -22,13 +22,15 @@ export class UsersService {
       id: uuidv4(),
     };
     this.users.push(newUser);
+    return null;
   }
 
   deleteUser(userId: string) {
     this.users.filter(({ id }) => id !== userId);
+    return null;
   }
 
-  updateUser(userId: string, { firstName, lastName, age }: UpdateUser) {
+  updateUser(userId: string, { firstName, lastName, age }: UpdateUserDto) {
     const { user, userIndex } = this.findUser(userId);
     this.users[userIndex] = {
       ...user,
@@ -36,6 +38,7 @@ export class UsersService {
       ...(lastName && { lastName }),
       ...(age && { age }),
     };
+    return null;
   }
 
   private findUser(userId: string): { user: User; userIndex: number } {
