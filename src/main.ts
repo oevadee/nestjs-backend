@@ -3,8 +3,6 @@ import { AppModule } from './modules/app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 const PORT = process.env.PORT || 3000;
-const CORS_URL =
-  'http://localhost:8000' || 'https://oevadee-vite-react-frontend.netlify.app/';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

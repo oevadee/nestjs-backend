@@ -40,9 +40,9 @@ export class UsersController {
   @Delete(':id')
   remove(
     @Param()
-    userId,
+    params,
   ) {
-    return this.usersService.deleteUser(userId);
+    return this.usersService.deleteUser(params.id);
   }
 
   @Patch(':id')
