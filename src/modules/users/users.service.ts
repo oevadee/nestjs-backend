@@ -26,8 +26,8 @@ export class UsersService {
   }
 
   deleteUser(userId: string) {
-    this.users.filter(({ id }) => id !== userId);
-    return null;
+    const { userIndex } = this.findUser(userId);
+    this.users.splice(userIndex, 1);
   }
 
   updateUser(userId: string, { firstName, lastName, age }: UpdateUserDto) {
